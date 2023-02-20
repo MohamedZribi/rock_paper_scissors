@@ -21,24 +21,30 @@ let computer = 0;
 
 function playRound(playerSelection, computerSelection) {
     
+    let result = "";
     playerSelection.toLowerCase() /* Making the user input case insensetive */
 
-    /* When the player plays rock */
-    switch (playerSelection == "rock") {
-        case computerSelection == "Rock": 
-            return "It's a tie, play again"
-            break
+    /* we need to ask the player to enter a valid option if
+       his entry isn't in the choices array = ["rock", "paper", "scissors"]; */
 
-        case computerSelection == "paper":
-            computer++
-            return "You Lose! Paper beats Rock"
-            break
-            
-        case computerSelection == "scissors": 
-            player++
-            return "You win! Rock beats Scissors"
-    } 
 
+    /* It's a tie */
+    if ( ( playerSelection === "rock" && computerSelection === "rock" ) ||
+         ( playerSelection === "paper"  && computerSelection === "paper" ) ||
+         ( playerSelection ==="scissors" && computerSelection === "scissors" ) ) { result = "It's a tie, play again" }
+
+
+    /* PLayer lose */
+    else if ( ( playerSelection === "rock" && computerSelection === "paper" ) ||
+              ( playerSelection === "paper" && computerSelection == "scissors") ||
+              ( playerSelection === "scissors" && computerSelection == "paper") ) {result = `You lose! ${computerSelection} beats ${playerSelection}` }
+
+    /* Player wins */
+    else if ( ( playerSelection === "rock" && computerSelection === "scissors") ||
+              ( playerSelection === "paper" && computerSelection === "rock") ||
+              ( playerSelection === "scissors" && computerSelection === "paper") ) { result = `You win! ${playerSelection} beats ${computerSelection}` }          
+
+    return result
 
     }
 
@@ -46,18 +52,11 @@ function playRound(playerSelection, computerSelection) {
 
 
 
-const playerSelection = (prompt("", "Choose your move!")).toLowerCase();
+
+
+const playerSelection = (prompt("", "Choose your move!"));
 const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
 
 
-  
+console.log(`The computer played: ${computerSelection}`)  
 console.log(playRound(playerSelection, computerSelection));
-
-// function game(playRound)
-
-
-// for (let i = 0; i < 5; i++) {
-//     playRound(playerSelection, computerSelection);
-//     game(playRound);
-//  }
