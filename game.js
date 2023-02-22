@@ -17,6 +17,10 @@ let computerScore = 0;
 function playRound(playerSelection, computerSelection) {
     
     let result = "";
+    document.getElementById("winner").innerHTML = "";
+    document.getElementById("winner").innerHTML = "";
+
+
     
     document.getElementById("computerSelection").innerHTML = `The computer chose ${computerSelection}!`
     document.getElementById("playerSelection").innerHTML = `You chose ${playerSelection}!`
